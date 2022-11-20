@@ -1,0 +1,8 @@
+name: Teams
+version: '${project.version}'
+main: org.rubixstudios.teams.Teams
+api-version: 1.19
+authors: [ Tokeee ]
+commands:
+  teams:
+    description: brr
