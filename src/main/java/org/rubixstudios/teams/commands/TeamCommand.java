@@ -6,9 +6,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class TeamCommand implements CommandExecutor {
 
@@ -20,7 +18,7 @@ public class TeamCommand implements CommandExecutor {
 
     private void initialize() {
         commandList.add(new CreateTeam());
-        commandList.add(new DeleteTeam());
+        commandList.add(new DisbandTeam());
         commandList.add(new SetTeamOwner());
     }
 

@@ -65,8 +65,11 @@ public final class Teams extends JavaPlugin {
     }
 
     public void removeTeamByTeamID(UUID teamUUID) {
-        for (TeamData teamData : (TeamData[]) teamsList.toArray()) {
-            if (teamData.getTeamID().equals(teamUUID)) teamsList.remove(teamData);
+        for (TeamData teamData : getCopiedTeamList()) {
+            if (teamData.getTeamID().equals(teamUUID)) {
+                removeTeam(teamData);
+                break;
+            }
         }
     }
 
@@ -80,8 +83,20 @@ public final class Teams extends JavaPlugin {
 
     public void removeTeamByName(String name) {
         for (TeamData teamData : getCopiedTeamList()) {
-            if (teamData.getTeamName().equals(name)) teamsList.remove(teamData);
+            if (teamData.getTeamName().equals(name)) {
+                removeTeam(teamData);
+                break;
+            }
         }
+    }
+
+    public void removeTeam(TeamData teamData) {
+        for (UUID allyUUID : teamData.getAllyUUIDS()) {
+            final TeamData ally = getTeamDataByTeamID(allyUUID);
+            ally.getAllyUUIDS().remove(allyUUID);
+        }
+
+        teamsList.remove(teamData);
     }
 
     public List<TeamData> getCopiedTeamList() {

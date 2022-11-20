@@ -9,7 +9,7 @@ import org.rubixstudios.teams.data.TeamData;
 
 import java.util.UUID;
 
-public class DeleteTeam extends SubCommand {
+public class DisbandTeam extends SubCommand {
     @Override
     public String getPrefix() {
         return "teams";
